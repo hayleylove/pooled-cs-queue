@@ -1,0 +1,10 @@
+# Optional: CodeRabbit works without this file. Check the keys against their docs.
+language: "en-US"
+reviews:
+  profile: "assertive"
+  high_level_summary: true
+  path_instructions:
+    - path: "config/**"
+      instructions: "Check that thresholds and weights are consistent with the code that reads them."
+    - path: "pooled_queue/**"
+      instructions: "Look for edge cases around missing data, boundaries, and division by zero."

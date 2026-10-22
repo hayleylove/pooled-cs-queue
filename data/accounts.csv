@@ -1,0 +1,15 @@
+account_id,name,domain,arr,seats_purchased,seats_active,lifetime_active_users,last_active_days,config_score,days_since_signup,days_to_renewal,cancellation_started,digital_touches
+A001,Northwind Logistics Group,northwind-logistics.example,240000,400,310,285,2,78,640,120,false,0
+A002,Contoso Retail Holdings,contoso-retail.example,64000,120,35,40,3,41,300,45,false,1
+A003,Fabrikam Payments,fabrikam-pay.example,38000,40,18,22,6,35,200,25,false,2
+A004,Tailspin Aerospace,tailspin-aero.example,310000,900,120,150,20,22,500,90,true,0
+A005,Globex Health Systems,globex-health.example,52000,60,1,1,33,12,45,200,false,0
+A006,Initech Software,initech.example,9000,10,0,0,0,0,21,330,false,0
+A007,Umbrella Biotech,umbrella-bio.example,18000,25,3,3,10,18,60,150,false,1
+A008,Stark Manufacturing,stark-mfg.example,87000,150,140,138,1,82,420,50,false,0
+A009,Wayne Capital Partners,wayne-capital.example,29000,35,30,31,2,66,380,200,false,0
+A010,Acme Freight Co,acme-freight.example,12000,15,2,2,45,25,80,95,false,2
+A011,Hooli Cloud,hooli-cloud.example,15000,20,14,15,4,60,310,180,false,0
+A012,Soylent Foods Inc,soylent-foods.example,71000,90,25,30,8,48,150,28,true,0
+A013,Pied Piper Systems,piedpiper.example,5000,5,1,1,2,55,30,330,false,0
+A014,Vandelay Industries,vandelay.example,150000,250,60,70,9,40,260,70,false,0

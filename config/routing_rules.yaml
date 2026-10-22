@@ -1,0 +1,67 @@
+# Every number that drives the queue lives here, so any rule can be audited
+# (and changed) without touching code.
+
+triggers:
+  cancellation_started:
+    weight: 100
+    digital_first: false          # cancellations always go to a person
+    first_response_hours: 4
+    resolution_hours: 72
+    params: {}
+  renewal_approaching:
+    weight: 60
+    digital_first: true
+    first_response_hours: 24
+    resolution_hours: 120
+    params: {days_to_renewal_lte: 60}
+  solo_user_quiet:
+    weight: 50
+    digital_first: true
+    first_response_hours: 24
+    resolution_hours: 120
+    params: {quiet_days_gte: 14}
+  stalled_onboarding:
+    weight: 45
+    digital_first: true
+    first_response_hours: 24
+    resolution_hours: 168
+    params: {min_days_since_signup: 14, max_days_since_signup: 90, config_score_lt: 30}
+  nothing_configured:
+    weight: 40
+    digital_first: true
+    first_response_hours: 48
+    resolution_hours: 168
+    params: {min_days_since_signup: 7}
+  seat_underuse:
+    weight: 35
+    digital_first: true
+    first_response_hours: 48
+    resolution_hours: 240
+    params: {utilization_lt: 0.5, min_seats: 5}
+
+# Public-company data and internal priority flags raise a case's score.
+# Only the single largest multiplier applies (no stacking), capped below.
+firmographics:
+  fortune500:
+    top100_multiplier: 1.5
+    top500_multiplier: 1.25
+  priority_tiers:
+    strategic: 1.6
+    design_partner: 1.4
+    exec_sponsor: 1.3
+  multiplier_cap: 1.75
+
+scoring:
+  arr_per_point: 50000            # +1 point per $50k ARR...
+  arr_bonus_max: 10               # ...capped at +10
+
+urgency:
+  renewal_within_days: 30         # any case on an account renewing this soon
+  bonus_points: 15
+
+routing:
+  named_arr_threshold: 100000     # at or above this ARR -> named lane
+  digital_max_touches: 2          # unanswered digital touches before escalating
+  skip_digital_for:               # these never wait in the digital lane
+    - fortune500_top100
+    - "priority:strategic"
