@@ -38,6 +38,12 @@ triggers:
     first_response_hours: 48
     resolution_hours: 240
     params: {utilization_lt: 0.5, min_seats: 5}
+  seat_expansion:
+    weight: 30
+    digital_first: false
+    first_response_hours: 48
+    resolution_hours: 240
+    params: {utilization_gte: 0.95, min_seats: 5}
 
 # Public-company data and internal priority flags raise a case's score.
 # Only the single largest multiplier applies (no stacking), capped below.
