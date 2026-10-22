@@ -33,6 +33,8 @@ def _nothing_configured(a: Account, p: dict) -> bool:
 def _seat_underuse(a: Account, p: dict) -> bool:
     return a.seats_purchased >= p["min_seats"] and a.utilization < p["utilization_lt"]
 
+def _seat_expansion(a: Account, p: dict) -> bool:
+     return a.seats_purchased >= p["min_seats"] and a.utilization >= p["utilization_gte"]
 
 PREDICATES: dict[str, Predicate] = {
     "cancellation_started": _cancellation_started,
@@ -41,6 +43,7 @@ PREDICATES: dict[str, Predicate] = {
     "stalled_onboarding": _stalled_onboarding,
     "nothing_configured": _nothing_configured,
     "seat_underuse": _seat_underuse,
+    "seat_expansion": _seat_expansion,
 }
 
 
